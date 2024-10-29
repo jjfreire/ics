@@ -22,7 +22,7 @@ for line in sys.stdin:
             min_temp = current_min_temp
     else:
         if city_id is not None:
-            print '%s\t%s\t%s' % (current_city_id, max_temp, min_temp)
+            print '%s\t%s\t%s' % (city_id, max_temp, min_temp)
         city_id = current_city_id
         max_temp = current_max_temp
         min_temp = current_min_temp

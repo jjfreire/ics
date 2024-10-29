@@ -17,3 +17,8 @@ hdfs dfs -ls sources
 ```bash
 /usr/bin/hadoop jar /usr/lib/hadoop-mapreduce/hadoop-streaming-2.6.0-cdh5.7.0.jar -D mapreduce.job.reduces=2 -input sources -output output_dir -mapper mapper.py -reducer reducer.py -file mapper.py -file reducer.py
 ```
+
+### Hacer un rm del directorio en el HDFS
+```bash
+hdfs dfs -rmdir sources 
+```
