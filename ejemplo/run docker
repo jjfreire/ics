@@ -1,1 +1,0 @@
-docker run --hostname=quickstart.cloudera --privileged=true -t -i --cpus=4 -v /home/juanjo/repos/muei/muei2024-25/ICS/MapReduce/ejemplo:/home/cloudera/practicas --publish-all=true -p 7180 cloudera/quickstart /usr/bin/docker-quickstart
