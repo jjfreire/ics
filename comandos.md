@@ -3,7 +3,7 @@
 docker run --hostname=quickstart.cloudera --privileged=true -t -i --cpus=12 -v /home/juanjo/repos/muei/ics/ejercicio1:/home/cloudera/ejercicio1 --publish-all=true -p 7180 cloudera/quickstart /usr/bin/docker-quickstart
 ```
 
-### Lanzar HDFS (dentro de docker)
+### Subir directorio a HDFS (dentro de docker)
 ```bash
 hdfs dfs -put sources
 ```
@@ -21,4 +21,9 @@ hdfs dfs -ls sources
 ### Hacer un rm del directorio en el HDFS
 ```bash
 hdfs dfs -rmdir sources 
+```
+
+### Bajar directorio de HDFS a local
+```bash
+hdfs dfs -get salida_libros /home/cloudera/practicas/.
 ```

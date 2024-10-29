@@ -10,9 +10,11 @@ for line in sys.stdin:
     line = line.strip()
     current_city_id, current_max_temp, current_min_temp = line.split('\t')
     try:
+        if current_max_temp == "-9999.0" or current_min_temp == "-9999.0":
+            raise Exception
         current_max_temp = float(current_max_temp)
         current_min_temp = float(current_min_temp)
-    except ValueError:
+    except (ValueError, Exception):
         continue
 
     if city_id == current_city_id:
