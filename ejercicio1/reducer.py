@@ -2,7 +2,8 @@
 
 import sys
 
-city_id = None
+city_id_max = None
+city_id_min = None
 max_temp = None
 min_temp = None
 
@@ -17,17 +18,14 @@ for line in sys.stdin:
     except (ValueError, Exception):
         continue
 
-    if city_id == current_city_id:
-        if max_temp is None or current_max_temp > max_temp:
-            max_temp = current_max_temp
-        if min_temp is None or current_min_temp < min_temp:
-            min_temp = current_min_temp
-    else:
-        if city_id is not None:
-            print '%s\t%s\t%s' % (city_id, max_temp, min_temp)
-        city_id = current_city_id
+    if max_temp is None or current_max_temp > max_temp:
         max_temp = current_max_temp
-        min_temp = current_min_temp
+        city_id_max = current_city_id
 
-if city_id == current_city_id:
-    print '%s\t%s\t%s' % (current_city_id, max_temp, min_temp)
+    if min_temp is None or current_min_temp < min_temp:
+        min_temp = current_min_temp
+        city_id_min = current_city_id
+
+
+print '%s\t%s' % (city_id_max, max_temp)
+print '%s\t%s' % (city_id_min, min_temp)
