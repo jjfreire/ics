@@ -1,0 +1,105 @@
+<html><head>
+<title> BU-Web-Client - Six Months of Web Client Traces
+</title></head><body>
+<!-- @(#) $Header: /home/portnoy/u4/vern/ITA/html/contrib/RCS/BU-Web-Client.html,v 1.2 2004/04/18 00:35:10 vern Exp $ (LBL)-->
+<h1>
+<em>BU-Web-Client</em>
+</h1>
+<dl>
+<dt>
+<b>Description</b>
+<dd>
+These traces contain records of the HTTP requests and user behavior of a
+set of Mosaic clients running in the Boston University Computer Science
+Department, spanning the timeframe of 21 November 1994 through 8 May 1995.
+<br><br>
+During the data collection period a total of 9,633 Mosaic sessions were
+traced, representing a population of  762 different users, and
+resulting in 1,143,839 requests for data transfer.  
+<br><br>
+<dt>
+<b>Format</b>
+<dd>
+Trace logfiles contain the sequence of WWW object requests
+(whether the object was served from the local cache or from the
+network).  Each log file name contains a <em>user id number</em>,
+converted from Unix 
+UIDs via a one-way function that allows user IDs to be compared for
+equality but not to be easily traced back to particular users.  The file name
+also gives the machine on which the session took place, and
+the Unix timestamp when the
+session started.  Boston University is located in the United States Eastern
+Time Zone.
+For example, a file named <em>con1.cs20.785526125</em> is a log of a
+session from user <b>1</b>, on machine <b>cs20</b>,
+starting at time <b>785526125</b> (12:42:05 EST, Tuesday, November 22, 1994).
+<br><br>
+Each line in a log corresponds to a single URL requested by
+the user; it contains the machine name, the timestamp when the request
+was made, the user id number, the URL, the 
+size of the document (including the overhead of the protocol) and the
+object retrieval time in seconds (reflecting only actual communication time,
+and not including the intermediate processing performed by Mosaic in a
+multi-connection transfer).  An example of a line from a condensed log
+is: 
+<br>
+<b>cs20 785526142 920156 "http://cs-www.bu.edu/lib/pics/bu-logo.gif" 1804 0.484092</b>
+<br>
+Lines with the number of bytes equal
+to 0 and retrieval delay equal to 0.0 mean that the request was
+satisfied by Mosaic's internal cache.
+<br><br>
+<dt>
+<b>Measurement</b>
+<dd>
+To collect this data we installed an instrumented version of Mosaic in
+the general computing environment at Boston University's Computer
+Science Department.   This environment consists principally of 37
+SparcStation 2 workstations connected in a local network, which is
+divided in 2 subnets.  Each workstation has its own local disk;  logs
+were written to the local disk and subsequently transferred to a central
+repository. 
+<br><br>
+We began by collecting data on a subset of the workstations
+only, while testing our data collection process.   This period lasted
+from 21 November 1994 until 17 January 1995.
+When we were statisfied that data collection was occurring correctly, we
+extended the data collection process to include all
+workstations;  data collection then took place until 8 May 1995.
+Since Mosaic ceased to be the dominant browser in use by early March
+1995, the most representative portion of the traces are those covering
+the period 21 November 1995 through
+28 February 1995.
+<br><br>
+<dt>
+<b>Privacy</b>
+<dd>
+The user IDs in these logs have been renumbered to protect privacy.
+<dt>
+<b>Acknowledgements</b>
+<dd>
+These logs were collected by the members of the
+<a href="http://cs-www.bu.edu/groups/oceans/Home.html">Oceans
+research group</a> at Boston University.
+Mosaic was instrumented by Carlos Cunha (<em>carro@cs.bu.edu</em>).   When
+referring to the use of these traces in published work, please cite
+<a href="ftp://cs-ftp.bu.edu/techreports/95-010-www-client-traces.ps.Z">
+Characteristics of WWW Client Traces</a>,
+Carlos A. Cunha, Azer Bestavros and Mark E. Crovella,
+Boston University Department of Computer Science,
+Technical Report TR-95-010, April 1995.
+<dt>
+<b>Restrictions</b>
+<dd>
+The traces may be freely redistributed.
+<dt>
+<b>Distribution</b>
+<dd>
+Available from the Archive as a
+<a href="ftp://ita.ee.lbl.gov/traces/BU-www-client-traces.tar.gz">
+gzip compressed tar</a> file (13.8 MB; 101 MB uncompressed).
+</dl>
+<br><br>
+Up to
+<a href=../traces.html> Traces In The Internet Traffic Archive</a>.
+</body></html>
