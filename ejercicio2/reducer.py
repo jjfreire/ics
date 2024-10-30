@@ -41,5 +41,5 @@ for i in range(len(users)):
         max_user_ps_count = user_ps_counts[i]
         max_user = users[i]
 
-print("Usuario con más accesos a archivos .ps: {}\tNúmero de accesos: {}".format(max_user, max_user_ps_count))
-print("URL más visitada: {}\tNúmero de visitas: {}".format(max_url, max_url_count))
+print '%s\t%d' % (max_user, max_user_ps_count)
+print '%s\t%d' % (max_url, max_url_count)
