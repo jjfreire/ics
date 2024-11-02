@@ -32,7 +32,7 @@ red_calidad = 0.0
 
 for line in sys.stdin:
     line = line.strip()
-    wine_type, acidez_fija, acidez_volatil, acido_citrico, azucar, cloruros, CO2_azLibre, CO2_azTotal, densidad, pH, sulfatos, alcohol, calidad  = line.split('\t')
+    _, wine_type, acidez_fija, acidez_volatil, acido_citrico, azucar, cloruros, CO2_azLibre, CO2_azTotal, densidad, pH, sulfatos, alcohol, calidad  = line.split('\t')
     acidez_fija = float(acidez_fija)
     acidez_volatil = float(acidez_volatil)
     acido_citrico = float(acido_citrico)
