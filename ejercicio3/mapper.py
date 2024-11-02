@@ -8,7 +8,6 @@ wine_type = os.environ['mapreduce_map_input_file'].split('/')[-1]
 first_line = True
 
 for line in sys.stdin:
-    
     if first_line:
         first_line= False
         continue

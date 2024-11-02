@@ -46,37 +46,34 @@ for line in sys.stdin:
     alcohol = float(alcohol)
     calidad = float(calidad)
 
-    if wine_type == 'red':
+    if wine_type == 'white':
         whites += 1
-        white_acidez_fija += acidez_fija 
-        white_acidez_volatil += acidez_volatil
-        white_acido_citrico += acido_citrico
-        white_azucar += azucar
-        white_cloruros += cloruros
-        white_CO2_azLibre += CO2_azLibre
-        white_CO2_azTotal += CO2_azTotal
-        white_densidad += densidad
-        white_pH += pH
-        white_sulfatos += sulfatos
-        white_alcohol += alcohol
-        white_calidad += calidad
+        white_acidez_fija += (acidez_fija - white_acidez_fija) / whites 
+        white_acidez_volatil += (acidez_volatil - white_acidez_volatil) / whites
+        white_acido_citrico += (acido_citrico - white_acido_citrico) / whites
+        white_azucar += (azucar - white_azucar) / whites
+        white_cloruros += (cloruros - white_cloruros) / whites
+        white_CO2_azLibre += (CO2_azLibre - white_CO2_azLibre) / whites
+        white_CO2_azTotal += (CO2_azTotal - white_CO2_azTotal) / whites
+        white_densidad += (densidad - white_densidad) / whites
+        white_pH += (pH - white_pH) / whites
+        white_sulfatos += (sulfatos - white_sulfatos) / whites
+        white_alcohol += (alcohol - white_alcohol) / whites
+        white_calidad += (calidad - white_calidad) / whites
     else:
         reds += 1
-        red_acidez_fija += acidez_fija 
-        red_acidez_volatil += acidez_volatil
-        red_acido_citrico += acido_citrico
-        red_azucar += azucar
-        red_cloruros += cloruros
-        red_CO2_azLibre += CO2_azLibre
-        red_CO2_azTotal += CO2_azTotal
-        red_densidad += densidad
-        red_pH += pH
-        red_sulfatos += sulfatos
-        red_alcohol += alcohol
-        red_calidad += calidad
-
-#Se pintean la suma total de tipos de vino y las sumas de sus atributos
-#En el script -> Sumar todas las partes y dividir atributos sumados entre la suma total de los 2 tipos de vino
+        red_acidez_fija += (acidez_fija - red_acidez_fija) / reds 
+        red_acidez_volatil += (acidez_volatil - red_acidez_volatil) / reds
+        red_acido_citrico += (acido_citrico - red_acido_citrico) / reds
+        red_azucar += (azucar - red_azucar) / reds
+        red_cloruros += (cloruros - red_cloruros) / reds
+        red_CO2_azLibre += (CO2_azLibre - red_CO2_azLibre) / reds
+        red_CO2_azTotal += (CO2_azTotal - red_CO2_azTotal) / reds
+        red_densidad += (densidad - red_densidad) / reds
+        red_pH += (pH - red_pH) / reds
+        red_sulfatos += (sulfatos - red_sulfatos) / reds
+        red_alcohol += (alcohol - red_alcohol) / reds
+        red_calidad += (calidad - red_calidad) / reds
 
 print '%d\t%.2f\t%.3f\t%.3f\t%.3f\t%.3f\t%.1f\t%.1f\t%.4f\t%.3f\t%.3f\t%.2f\t%.1f' % (whites, white_acidez_fija, white_acidez_volatil, white_acido_citrico, white_azucar, white_cloruros, white_CO2_azLibre, white_CO2_azTotal, white_densidad, white_pH, white_sulfatos, white_alcohol, white_calidad)
 print '%d\t%.2f\t%.3f\t%.3f\t%.3f\t%.3f\t%.1f\t%.1f\t%.4f\t%.3f\t%.3f\t%.2f\t%.1f' % (reds, red_acidez_fija, red_acidez_volatil, red_acido_citrico, red_azucar, red_cloruros, red_CO2_azLibre, red_CO2_azTotal, red_densidad, red_pH, red_sulfatos, red_alcohol, red_calidad)
