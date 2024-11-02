@@ -2,44 +2,30 @@
 
 import sys
 
-urls = []
-url_counts = []
-users = []
-user_ps_counts = []
+urls = {}
+users = {}
 
 for line in sys.stdin:
     line = line.strip()
     url, user, is_ps = line.split('\t')
     is_ps = int(is_ps)
 
-    if url in urls:
-        url_index = urls.index(url)
-        url_counts[url_index] += 1
+    url_count = urls.get(url)
+    if url_count is None:
+        urls[url] = 1
     else:
-        urls.append(url)
-        url_counts.append(1)
+        urls[url] = url_count + 1
 
-    if is_ps == 1:
-        if user in users:
-            user_index = users.index(user)
-            user_ps_counts[user_index] += 1
+    if is_ps:
+        ps_count = users.get(user)
+        if ps_count is None:
+            users[user] = 1
         else:
-            users.append(user)
-            user_ps_counts.append(1)
+            users[user] = ps_count + 1
 
-max_url_count = 0
-max_url = None
-for i in range(len(urls)):
-    if url_counts[i] > max_url_count:
-        max_url_count = url_counts[i]
-        max_url = urls[i]
 
-max_user_ps_count = 0
-max_user = None
-for i in range(len(users)):
-    if user_ps_counts[i] > max_user_ps_count:
-        max_user_ps_count = user_ps_counts[i]
-        max_user = users[i]
+max_url = max(urls, key=urls.get)
+max_user = max(users, key=users.get)
 
-print '%s\t%d' % (max_user, max_user_ps_count)
-print '%s\t%d' % (max_url, max_url_count)
+print '%s\t%d' % (max_user, users[max_user])
+print '%s\t%d' % (max_url, urls[max_url])
