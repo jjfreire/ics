@@ -2,44 +2,81 @@
 
 import sys
 
-urls = []
-url_counts = []
-users = []
-user_ps_counts = []
+whites = 0
+white_acidez_fija = 0.0
+white_acidez_volatil = 0.0
+white_acido_citrico = 0.0
+white_azucar = 0.0
+white_cloruros = 0.0
+white_CO2_azLibre = 0.0
+white_CO2_azTotal = 0.0
+white_densidad = 0.0
+white_pH = 0.0
+white_sulfatos = 0.0
+white_alcohol = 0.0
+white_calidad = 0.0
+
+reds = 0
+red_acidez_fija = 0.0
+red_acidez_volatil = 0.0
+red_acido_citrico = 0.0
+red_azucar = 0.0
+red_cloruros = 0.0
+red_CO2_azLibre = 0.0
+red_CO2_azTotal = 0.0
+red_densidad = 0.0
+red_pH = 0.0
+red_sulfatos = 0.0
+red_alcohol = 0.0
+red_calidad = 0.0
 
 for line in sys.stdin:
     line = line.strip()
-    url, user, is_ps = line.split('\t')
-    is_ps = int(is_ps)
+    wine_type, acidez_fija, acidez_volatil, acido_citrico, azucar, cloruros, CO2_azLibre, CO2_azTotal, densidad, pH, sulfatos, alcohol, calidad  = line.split('\t')
+    acidez_fija = float(acidez_fija)
+    acidez_volatil = float(acidez_volatil)
+    acido_citrico = float(acido_citrico)
+    azucar = float(azucar)
+    cloruros = float(cloruros)
+    CO2_azLibre = float(CO2_azLibre)
+    CO2_azTotal = float(CO2_azTotal)
+    densidad = float(densidad)
+    pH = float(pH)
+    sulfatos = float(sulfatos)
+    alcohol = float(alcohol)
+    calidad = float(calidad)
 
-    if url in urls:
-        url_index = urls.index(url)
-        url_counts[url_index] += 1
+    if wine_type == 'red':
+        whites += 1
+        white_acidez_fija += acidez_fija 
+        white_acidez_volatil += acidez_volatil
+        white_acido_citrico += acido_citrico
+        white_azucar += azucar
+        white_cloruros += cloruros
+        white_CO2_azLibre += CO2_azLibre
+        white_CO2_azTotal += CO2_azTotal
+        white_densidad += densidad
+        white_pH += pH
+        white_sulfatos += sulfatos
+        white_alcohol += alcohol
+        white_calidad += calidad
     else:
-        urls.append(url)
-        url_counts.append(1)
+        reds += 1
+        red_acidez_fija += acidez_fija 
+        red_acidez_volatil += acidez_volatil
+        red_acido_citrico += acido_citrico
+        red_azucar += azucar
+        red_cloruros += cloruros
+        red_CO2_azLibre += CO2_azLibre
+        red_CO2_azTotal += CO2_azTotal
+        red_densidad += densidad
+        red_pH += pH
+        red_sulfatos += sulfatos
+        red_alcohol += alcohol
+        red_calidad += calidad
 
-    if is_ps == 1:
-        if user in users:
-            user_index = users.index(user)
-            user_ps_counts[user_index] += 1
-        else:
-            users.append(user)
-            user_ps_counts.append(1)
+#Se pintean la suma total de tipos de vino y las sumas de sus atributos
+#En el script -> Sumar todas las partes y dividir atributos sumados entre la suma total de los 2 tipos de vino
 
-max_url_count = 0
-max_url = None
-for i in range(len(urls)):
-    if url_counts[i] > max_url_count:
-        max_url_count = url_counts[i]
-        max_url = urls[i]
-
-max_user_ps_count = 0
-max_user = None
-for i in range(len(users)):
-    if user_ps_counts[i] > max_user_ps_count:
-        max_user_ps_count = user_ps_counts[i]
-        max_user = users[i]
-
-print '%s\t%d' % (max_user, max_user_ps_count)
-print '%s\t%d' % (max_url, max_url_count)
+print '%d\t%.2f\t%.3f\t%.3f\t%.3f\t%.3f\t%.1f\t%.1f\t%.4f\t%.3f\t%.3f\t%.2f\t%.1f' % (whites, white_acidez_fija, white_acidez_volatil, white_acido_citrico, white_azucar, white_cloruros, white_CO2_azLibre, white_CO2_azTotal, white_densidad, white_pH, white_sulfatos, white_alcohol, white_calidad)
+print '%d\t%.2f\t%.3f\t%.3f\t%.3f\t%.3f\t%.1f\t%.1f\t%.4f\t%.3f\t%.3f\t%.2f\t%.1f' % (reds, red_acidez_fija, red_acidez_volatil, red_acido_citrico, red_azucar, red_cloruros, red_CO2_azLibre, red_CO2_azTotal, red_densidad, red_pH, red_sulfatos, red_alcohol, red_calidad)
